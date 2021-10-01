@@ -3,19 +3,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.form div {
-    width: 100%;
+    background-color: #3f51b5;
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 25px;
+    padding: 5% 0%;
 }
 
 .form .big-label {
-    width: 50%;
-    display: inline-block;
-    text-align: right;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 7px 0px;
 }
 
 .form .form-line {
+    padding: 15px;
     margin-bottom: 15px;
 }
 
