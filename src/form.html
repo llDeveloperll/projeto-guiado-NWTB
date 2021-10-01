@@ -7,6 +7,7 @@
     <title>Listagem de alunos</title>    
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/form.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -24,12 +25,12 @@
         <form class="form">
             <div class="form-line">
                 <label class="big-label" for="name">Nome</label>
-                <input name="name" id="name" required type="text">                
+                <input name="name" id="name" type="text" required>                
             </div>
             
             <div class="form-line">
                 <label class="big-label" for="phone">Telefone</label>
-                <input name="phone" id="phone" required type="text">
+                <input name="phone" id="phone" type="text" required>
             </div>
  
             <div class="form-line exp-line" style="display: flex;">
@@ -51,4 +52,19 @@
         </form>
     </section>
 </body>
+    <script>
+        function inputHandler(masks, max, event) {
+            var c = event.target;
+            var v = c.value.replace(/\D/g, '');
+            var m = c.value.length > max ? 1 : 0;
+            VMasker(c).unMask();
+            VMasker(c).maskPattern(masks[m]);
+            c.value = VMasker.toPattern(v, masks[m]);
+        }
+
+        var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
+        var tel = document.getElementById('phone');
+        VMasker(tel).maskPattern(telMask[0]);
+        tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+    </script>
 </html>
