@@ -2,9 +2,9 @@
 
 ## Esse projeto é um dos exercicios da newtab, onde o intuito é desenvolver um formulário.
 
-### Escopo do projeto
+### Escopo do projeto:
 
-# {
+{
     O objetivo é criar uma aplicação que tenha as seguintes funcionalidades:
 
     • Duas páginas: cadastro e listagem.
