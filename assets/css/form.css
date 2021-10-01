@@ -1,0 +1,48 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form div {
+    width: 100%;
+}
+
+.form .big-label {
+    width: 50%;
+    display: inline-block;
+    text-align: right;
+}
+
+.form .form-line {
+    margin-bottom: 15px;
+}
+
+.exp-line div {
+    display: inline-block; 
+    width: 40%;
+}
+
+
+@media screen and (max-width: 419px) {
+    .form input[type="text"] {
+        width: 100%;
+    }
+
+    .form .big-label {
+        width: 100%;
+        text-align: center;
+    }
+
+    .exp-line {
+        flex-direction: column;
+    }
+
+    .exp-line div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+}

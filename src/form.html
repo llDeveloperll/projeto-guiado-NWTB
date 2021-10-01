@@ -20,5 +20,35 @@
             Cadastrar
         </a>
     </div>
+    <section>
+        <form class="form">
+            <div class="form-line">
+                <label class="big-label" for="name">Nome</label>
+                <input name="name" id="name" required type="text">                
+            </div>
+            
+            <div class="form-line">
+                <label class="big-label" for="phone">Telefone</label>
+                <input name="phone" id="phone" required type="text">
+            </div>
+ 
+            <div class="form-line exp-line" style="display: flex;">
+                <label class="big-label">Experiência Prévia</label>
+                <div>
+                    <input type="radio" name="exp" id="exp-yes">
+                    <label for="exp-yes">
+                        Sim
+                    </label> 
+                    <br>
+                    <input type="radio" name="exp" id="exp-no">
+                    <label for="exp-no">
+                        Não
+                    </label> 
+                </div>
+            </div>
+        
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
 </body>
 </html>
