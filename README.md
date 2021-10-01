@@ -4,7 +4,7 @@
 
 ### Escopo do projeto:
 
-{
+
     O objetivo é criar uma aplicação que tenha as seguintes funcionalidades:
 
     • Duas páginas: cadastro e listagem.
@@ -26,4 +26,3 @@
 
     • A aplicação deverá ser responsiva.
     • Persistir as transações no Local Storage.
-}
