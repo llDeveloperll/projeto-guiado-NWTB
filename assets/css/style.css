@@ -28,3 +28,10 @@ body {
     color: white;
     background-color: #3fb598;
 }
+
+
+@media screen and (max-width: 400px) {
+    .menu {
+        display: flex;
+    }
+}
