@@ -7,6 +7,7 @@
     <title>Formúlario Newtab</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/list.css">
+    <script src="./src/genList.js"></script>
 </head>
 <body>
     <header class="header">
@@ -21,8 +22,8 @@
         </div>
     </header>
     <section>
-        <table class="list">
-            <tr>
+        <table id="list" class="list">
+            <!--tr>
                 <td style="width:15%;">
                     Nome
                 </td>
@@ -63,8 +64,11 @@
                 <td>
                     <button> Alterar</button>
                 </td>
-            </tr>
+            </tr-->
         </table>
     </section>
 </body>
+<script type="text/javascript">
+    document.querySelector('.list').style.visibility='visible';
+</script>
 </html>
