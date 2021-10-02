@@ -67,7 +67,7 @@
     </section>
 </body>
     <script type="text/javascript">
-    
+
         var table = document.getElementById("list");
 
         table.style.width = '100%';
@@ -77,18 +77,55 @@
         var widthPrct = ['15%','10%','8%','10%'];
 
         function applyStylesheet(i,o,element,expState) {
-            element.style.backgroundColor = "#000000";
-            element.style.color = "white";
-            element.style.fontWeight = "bold";
-            element.style.padding = '7px';
-            element.style.textAlign = 'center';
 
-            if (i != 0) {
-                element.style.backgroundColor = (expState== "sim") ? "#2f9255" : "#ab362e";
+            element.style.color = "white";
+
+            if (element.nodeName == 'BUTTON') {
+
+                element.style.backgroundColor = "#5973c7";
+                element.style.padding ='5px 15px';
+                element.style.outline = "none";
+                element.style.outlineOffset = '0px';
+                element.style.border = '0px';
+                element.style.borderRadius = '12px';
+
             } else {
-                element.style.verticalAlign = "top";
-                element.style.width = widthPrct[o];
+                element.style.backgroundColor = "#000000";
+                element.style.fontWeight = "bold";
+                element.style.padding = '7px';
+                element.style.textAlign = 'center';
+
+                if (i != 0) {
+                    element.style.backgroundColor = (expState== "sim") ? "#2f9255" : "#ab362e";
+                } else {
+                    element.style.verticalAlign = "top";
+                    element.style.width = widthPrct[o];
+                }
             }
+
+        }
+
+        /*.list tr td button:hover {
+            background-color: #314a9c;
+        }
+
+        .list tr td button:active {
+            background-color: #0e2d91;
+        }*/
+
+        function applyColorOnOver(elem) {
+            elem.style.backgroundColor = '#314a9c'
+        }        
+
+        function removeColorOnOut(elem) {
+            elem.style.backgroundColor = "#5973c7";
+        }
+                
+        function applyColorOnClick(elem) {
+            elem.style.backgroundColor = '#0e2d91'
+            setTimeout(function(passedElem) {
+                passedElem.style.backgroundColor = '#5973c7'
+            },80,elem)
         }
 
         function genChildsAndDatas(conteudo) {
@@ -109,9 +146,16 @@
                     applyStylesheet(i,o,t,conteudo[i][2]);
 
                     if (i > 0 && o+1 == conteudo[i].length) {
-                        var btn = document.createElement("button");
+
+                        let btn = document.createElement("button");
+
+                        btn.onmouseover = function() {applyColorOnOver(btn)};
+                        btn.onmouseout = function() {removeColorOnOut(btn)};
+                        btn.onclick = function() {applyColorOnClick(btn)}
 
                         btn.appendChild(document.createTextNode(conteudo[i][o]));
+
+                        applyStylesheet(i,o,btn,conteudo[i][2]);
 
                         t.appendChild(btn);
                     } 
