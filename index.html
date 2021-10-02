@@ -102,27 +102,25 @@
 
                 for(var o=0;o<conteudo[i].length;o++){
 
-                    if (o != conteudo[i].length) {
+                    console.log(o)
 
-                        var t = document.createElement(thd(i));
+                    var t = document.createElement(thd(i));
 
+                    applyStylesheet(i,o,t,conteudo[i][2]);
+
+                    if (i > 0 && o+1 == conteudo[i].length) {
+                        var btn = document.createElement("button");
+                        var texto=document.createTextNode(conteudo[i][o]);
+                        btn.appendChild(texto);
+
+                        t.appendChild(btn)
+                    } else {
                         var texto=document.createTextNode(conteudo[i][o]);
                         t.appendChild(texto);
-
-                        applyStylesheet(i,o,t,conteudo[i][2]);
-
-                    } else if ( o+1 == conteudo[i].length && i != 0) {
-                        console.log('here' + 0)
-                        var t = document.createElement('button');
-                        var texto=document.createTextNode(conteudo[i][o]);
-                        t.appendChild(texto);
-                        
-                    };
+                    }
 
                     tr.appendChild(t);
-
                 }
-
 
                 (i==0)?thead.appendChild(tr):tbody.appendChild(tr);
                 
@@ -145,5 +143,17 @@
             ["priscila", "+55 (22) 22222-2222","sim","alterar"],
             ["maria", "+55 (11) 11111-1111","sim","alterar"]
         ])
+
+        /*
+            elemType = (o+1 == conteudo[i].length) ? "button" : thd(i);
+            if (i == 0) { elemType = thd(i)}
+
+            ( o == conteudo[i].length && i != 0) 
+
+            var t = document.createElement('button');
+            var texto=document.createTextNode(conteudo[i][o]);
+            t.appendChild(texto);
+        */
+
     </script>
 </html>
