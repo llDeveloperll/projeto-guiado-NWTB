@@ -67,13 +67,14 @@
     </section>
 </body>
     <script type="text/javascript">
+    
         var table = document.getElementById("list");
 
         table.style.width = '100%';
         table.style.marginTop = '7px';
         table.style.borderSpacing = '0';
 
-        var prct = ['15%','10%','8%','10%'];
+        var widthPrct = ['15%','10%','8%','10%'];
 
         function applyStylesheet(i,o,element,expState) {
             element.style.backgroundColor = "#000000";
@@ -86,13 +87,12 @@
                 element.style.backgroundColor = (expState== "sim") ? "#2f9255" : "#ab362e";
             } else {
                 element.style.verticalAlign = "top";
-                element.style.width = prct[o];
+                element.style.width = widthPrct[o];
             }
         }
 
-        function criarTabela(conteudo) {
+        function genChildsAndDatas(conteudo) {
 
-            var tabela = document.createElement("table");
             var thead = document.createElement("thead");
             var tbody=document.createElement("tbody");
 
@@ -131,7 +131,7 @@
 
         }
 
-        criarTabela([
+        genChildsAndDatas([
             ["Nome", "Telefone","Experiência Prévia","ações"],
             ["matheus",  "+55 (99) 99999-9999","sim","alterar"],
             ["cristian", "+55 (88) 88888-8888","não","alterar"],
