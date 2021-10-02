@@ -67,33 +67,38 @@
     </section>
 </body>
     <script type="text/javascript">
-        var table = document.getElementById("list")
+        var table = document.getElementById("list");
 
         table.style.width = '100%';
         table.style.marginTop = '7px';
         table.style.borderSpacing = '0';
+
+        var prct = ['15%','10%','8%','10%']
 
         function criarTabela(conteudo) {
             var tabela = document.createElement("table");
             var thead = document.createElement("thead");
             var tbody=document.createElement("tbody");
             var thd=function(i){ return (i==0) ? "th" : "td";};
-            var cState;
+
             for (var i=0; i < conteudo.length; i++) {
                 var tr = document.createElement("tr");
-                for(var o=0;o<conteudo[i].length;o++){
-                    cState = "#000000"
-                    if (conteudo[i][2] != "Experiência Prévia") {
-                        cState = (conteudo[i][2] == "sim") ? "#2f9255" : "#ab362e"
-                    }
-                    tr.style.backgroundColor = cState
-                    var t = document.createElement(thd(i));
 
-                    t.style.width = '10%';
-                    t.style.fontWeight = "bold";
-                    t.style.verticalAlign = "top";
-                    t.style.padding = '5px';
-                    t.style.color = 'white';
+                for(var o=0;o<conteudo[i].length;o++){
+
+                    var t = document.createElement(thd(i));
+                    t.style.backgroundColor = "#000000";
+                    t.style.color = "white"
+                    t.style.fontWeight = "bold"
+                    t.style.padding = '7px'
+                    t.style.textAlign = 'center'
+
+                    if (conteudo[i][2] != "Experiência Prévia") {
+                        t.style.backgroundColor = (conteudo[i][2] == "sim") ? "#2f9255" : "#ab362e";
+                    } else {
+                        t.style.verticalAlign = "top";
+                        t.style.width = prct[o]
+                    }
 
                     var texto=document.createTextNode(conteudo[i][o]);
                     t.appendChild(texto);
@@ -101,18 +106,18 @@
                 }
                 (i==0)?thead.appendChild(tr):tbody.appendChild(tr);
             }
-            tabela.appendChild(thead);
-            tabela.appendChild(tbody);
-            return tabela;
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+
         }
 
-        document.getElementById("list").appendChild(criarTabela([
-            ["Nome", "Telefone","Experiência Prévia"],
-            ["matheus",  "+55 (99) 99999-9999","sim"],
-            ["cristian", "+55 (88) 88888-8888","não"],
-            ["pedro",    "+55 (77) 77777-7777","sim"],
-            ["henrique", "+55 (66) 66666-6666","não"]
-        ]));
-
+        criarTabela([
+            ["Nome", "Telefone","Experiência Prévia","ações"],
+            ["matheus",  "+55 (99) 99999-9999","sim","1"],
+            ["cristian", "+55 (88) 88888-8888","não","1"],
+            ["pedro",    "+55 (77) 77777-7777","sim","1"],
+            ["henrique", "+55 (66) 66666-6666","não","1"]
+        ])
     </script>
 </html>
