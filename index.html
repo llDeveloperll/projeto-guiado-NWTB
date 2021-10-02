@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formúlario Newtab</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/list.css">
 </head>
 <body>
     <header class="header">
@@ -68,23 +67,34 @@
     </section>
 </body>
     <script type="text/javascript">
-    
+        var table = document.getElementById("list")
+
+        table.style.width = '100%';
+        table.style.marginTop = '7px';
+        table.style.borderSpacing = '0';
+
         function criarTabela(conteudo) {
             var tabela = document.createElement("table");
             var thead = document.createElement("thead");
             var tbody=document.createElement("tbody");
-            var thd=function(i){return (i==0)?"th":"td";};
+            var thd=function(i){ return (i==0) ? "th" : "td";};
             var cState;
             for (var i=0; i < conteudo.length; i++) {
                 var tr = document.createElement("tr");
                 for(var o=0;o<conteudo[i].length;o++){
                     cState = "#000000"
                     if (conteudo[i][2] != "Experiência Prévia") {
-                        cState = conteudo[i][2] == "sim" ? "#2f9255" : "#ab362e"
+                        cState = (conteudo[i][2] == "sim") ? "#2f9255" : "#ab362e"
                     }
                     tr.style.backgroundColor = cState
                     var t = document.createElement(thd(i));
-                    t.style.width = '10%'
+
+                    t.style.width = '10%';
+                    t.style.fontWeight = "bold";
+                    t.style.verticalAlign = "top";
+                    t.style.padding = '5px';
+                    t.style.color = 'white';
+
                     var texto=document.createTextNode(conteudo[i][o]);
                     t.appendChild(texto);
                     tr.appendChild(t);
