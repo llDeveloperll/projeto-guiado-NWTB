@@ -73,20 +73,20 @@
         table.style.marginTop = '7px';
         table.style.borderSpacing = '0';
 
-        var prct = ['15%','10%','8%','10%']
+        var prct = ['15%','10%','8%','10%'];
 
         function applyStylesheet(i,o,element,expState) {
             element.style.backgroundColor = "#000000";
-            element.style.color = "white"
-            element.style.fontWeight = "bold"
-            element.style.padding = '7px'
-            element.style.textAlign = 'center'
+            element.style.color = "white";
+            element.style.fontWeight = "bold";
+            element.style.padding = '7px';
+            element.style.textAlign = 'center';
 
             if (i != 0) {
                 element.style.backgroundColor = (expState== "sim") ? "#2f9255" : "#ab362e";
             } else {
                 element.style.verticalAlign = "top";
-                element.style.width = prct[o]
+                element.style.width = prct[o];
             }
         }
 
@@ -102,7 +102,7 @@
 
                 var tr = document.createElement("tr");
 
-                for(var o=0;o<conteudo[i].length;o++){
+                for(var o=0;o<conteudo[i].length;o++) {
 
                     var t = document.createElement(thd(i));
 
@@ -113,12 +113,10 @@
 
                         btn.appendChild(document.createTextNode(conteudo[i][o]));
 
-                        t.appendChild(btn)
-
-                    } else {
-
+                        t.appendChild(btn);
+                    } 
+                    else {
                         t.appendChild(document.createTextNode(conteudo[i][o]));
-
                     }
 
                     tr.appendChild(t);
