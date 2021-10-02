@@ -75,6 +75,21 @@
 
         var prct = ['15%','10%','8%','10%']
 
+        function applyStylesheet(i,o,element,expState) {
+            element.style.backgroundColor = "#000000";
+            element.style.color = "white"
+            element.style.fontWeight = "bold"
+            element.style.padding = '7px'
+            element.style.textAlign = 'center'
+
+            if (i != 0) {
+                element.style.backgroundColor = (expState== "sim") ? "#2f9255" : "#ab362e";
+            } else {
+                element.style.verticalAlign = "top";
+                element.style.width = prct[o]
+            }
+        }
+
         function criarTabela(conteudo) {
             var tabela = document.createElement("table");
             var thead = document.createElement("thead");
@@ -84,27 +99,33 @@
             for (var i=0; i < conteudo.length; i++) {
                 var tr = document.createElement("tr");
 
+
                 for(var o=0;o<conteudo[i].length;o++){
 
-                    var t = document.createElement(thd(i));
-                    t.style.backgroundColor = "#000000";
-                    t.style.color = "white"
-                    t.style.fontWeight = "bold"
-                    t.style.padding = '7px'
-                    t.style.textAlign = 'center'
+                    if (o != conteudo[i].length) {
 
-                    if (conteudo[i][2] != "Experiência Prévia") {
-                        t.style.backgroundColor = (conteudo[i][2] == "sim") ? "#2f9255" : "#ab362e";
-                    } else {
-                        t.style.verticalAlign = "top";
-                        t.style.width = prct[o]
-                    }
+                        var t = document.createElement(thd(i));
 
-                    var texto=document.createTextNode(conteudo[i][o]);
-                    t.appendChild(texto);
+                        var texto=document.createTextNode(conteudo[i][o]);
+                        t.appendChild(texto);
+
+                        applyStylesheet(i,o,t,conteudo[i][2]);
+
+                    } else if ( o+1 == conteudo[i].length && i != 0) {
+                        console.log('here' + 0)
+                        var t = document.createElement('button');
+                        var texto=document.createTextNode(conteudo[i][o]);
+                        t.appendChild(texto);
+                        
+                    };
+
                     tr.appendChild(t);
+
                 }
+
+
                 (i==0)?thead.appendChild(tr):tbody.appendChild(tr);
+                
             }
 
             table.appendChild(thead);
@@ -114,15 +135,15 @@
 
         criarTabela([
             ["Nome", "Telefone","Experiência Prévia","ações"],
-            ["matheus",  "+55 (99) 99999-9999","sim","1"],
-            ["cristian", "+55 (88) 88888-8888","não","1"],
-            ["pedro",    "+55 (77) 77777-7777","sim","1"],
-            ["henrique", "+55 (66) 66666-6666","não","1"],
-            ["mariana", "+55 (55) 55555-5555","não","1"],
-            ["angelica", "+55 (44) 44444-4444","sim","1"],
-            ["lidia", "+55 (33) 33333-3333","não","1"],
-            ["priscila", "+55 (22) 22222-2222","sim","1"],
-            ["maria", "+55 (11) 11111-1111","sim","1"]
+            ["matheus",  "+55 (99) 99999-9999","sim","alterar"],
+            ["cristian", "+55 (88) 88888-8888","não","alterar"],
+            ["pedro",    "+55 (77) 77777-7777","sim","alterar"],
+            ["henrique", "+55 (66) 66666-6666","não","alterar"],
+            ["mariana", "+55 (55) 55555-5555","não","alterar"],
+            ["angelica", "+55 (44) 44444-4444","sim","alterar"],
+            ["lidia", "+55 (33) 33333-3333","não","alterar"],
+            ["priscila", "+55 (22) 22222-2222","sim","alterar"],
+            ["maria", "+55 (11) 11111-1111","sim","alterar"]
         ])
     </script>
 </html>
