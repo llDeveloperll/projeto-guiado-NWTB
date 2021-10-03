@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/form.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
+    <script src="./storageForm.js"></script>
 </head>
 <body>
     <header class="header">
@@ -36,20 +37,20 @@
  
             <div class="form-line exp-line" style="display: flex;">
                 <label class="big-label">Experiência Prévia</label>
-                <div>
-                    <input type="radio" name="exp" id="exp-yes" value="yes">
+                <div class="select-exp">
+                    <input type="radio" name="exp" id="exp-yes" value="sim">
                     <label for="exp-yes">
                         Sim
                     </label> 
                     <br>
-                    <input type="radio" name="exp" id="exp-no" value="no" checked>
+                    <input type="radio" name="exp" id="exp-no" value="não" checked>
                     <label for="exp-no">
                         Não
                     </label> 
                 </div>
             </div>
         
-            <input type="submit" value="Enviar">
+            <input class="submit-form" onclick="setLocalStorage()" type="submit" value="Enviar">
         </form>
     </section>
 </body>

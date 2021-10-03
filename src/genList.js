@@ -102,7 +102,45 @@
             table.appendChild(tbody);
 
         }
+        
 
+        /*
+        temporary = []
+        let datas = getLocalStorage();
+        temporary[0] = ["Nome", "Telefone", "Experiência Prévia", "ações"]
+
+        for (let i = 1; i < datas.length; i++) {
+            temporary[i] = datas[i]
+        }
+
+        
+        for (let index = 0; index < temporary.length; index++) {
+            console.log(temporary[index])
+        }
+
+        fake = [
+            ["Nome", "Telefone", "Experiência Prévia", "ações"],
+            ["matheus", "+55 (99) 99999-9999", "sim", "alterar"],
+            ["cristian", "+55 (88) 88888-8888", "não", "alterar"],
+            ["pedro", "+55 (77) 77777-7777", "sim", "alterar"],
+            ["henrique", "+55 (66) 66666-6666", "não", "alterar"],
+            ["mariana", "+55 (55) 55555-5555", "não", "alterar"],
+            ["angelica", "+55 (44) 44444-4444", "sim", "alterar"],
+            ["lidia", "+55 (33) 33333-3333", "não", "alterar"],
+            ["priscila", "+55 (22) 22222-2222", "sim", "alterar"],
+            ["maria", "+55 (11) 11111-1111", "sim", "alterar"]
+        ]
+
+        for (let index = 0; index < fake.length; index++) {
+            console.log(fake[index])
+        }
+
+        genChildsAndDatas([
+                temporary
+            ]
+        )
+        */
+       
         genChildsAndDatas([
             ["Nome", "Telefone", "Experiência Prévia", "ações"],
             ["matheus", "+55 (99) 99999-9999", "sim", "alterar"],
