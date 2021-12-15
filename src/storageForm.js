@@ -32,32 +32,38 @@ function displayRadioValue() {
 
 function setLocalStorage() {
 
-    document.querySelector('.submit-form').addEventListener('click', () => {
-        let name = document.getElementById('name');
-        let phoneNumber = document.getElementById('phone')
-        let exp = displayRadioValue()
-        /*localStorage.clear()*/
-        if (isAnValidInput(name) && isAnValidInput(phoneNumber)) { 
-            console.log("passed",name,phoneNumber,exp)
-            localStorage.setItem(localStorage.length + 1, [
-                name.value, 
-                phoneNumber.value, 
-                exp, 
-                "alterar"
-            ])
+    let name = document.getElementById('name');
+    let phoneNumber = document.getElementById('phone')
+    let exp = displayRadioValue()
+    /*localStorage.clear()*/
+
+    if (isAnValidInput(name) && isAnValidInput(phoneNumber)) { 
+        console.log("passed",name,phoneNumber,exp)
+
+        var newDatas = [
+            name.value, 
+            phoneNumber.value, 
+            exp
+        ]
+
+        if (localStorage.getItem('datas') === null) {
+            localStorage.setItem('datas', JSON.stringify(newDatas))
+        } else {
+            var sumDatas = [];
+            var oldData = JSON.parse(localStorage.getItem('datas')) 
+
+            sumDatas.push(oldData)
+            sumDatas.push(newDatas)
+            
+            localStorage.setItem('datas',JSON.stringify(sumDatas))
         }
-    })
+    }
 }
 
 function getLocalStorage() {
-    let temp = {}
-
-    for (i = 0; i <= localStorage.length; i++) {
-        console.log(localStorage.getItem(i))
-    }
-
+    var temp = JSON.parse(localStorage.getItem('datas'))
+    
     return temp
 }
 
-getLocalStorage()
-
+/*getLocalStorage()*/

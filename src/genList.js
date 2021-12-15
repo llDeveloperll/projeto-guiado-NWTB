@@ -25,6 +25,7 @@
                 element.style.border = '0px';
                 element.style.borderRadius = '12px';
 
+                element.style.fontWeight = "bold";
             } else {
                 element.style.backgroundColor = "#000000";
                 element.style.fontWeight = "bold";
@@ -65,37 +66,41 @@
 
             for (var i = 0; i < conteudo.length; i++) {
 
-                var tr = document.createElement("tr");
+                if (conteudo[i][0] != null) {
 
-                for (var o = 0; o < conteudo[i].length; o++) {
+                    var tr = document.createElement("tr");
 
-                    var t = document.createElement(thd(i));
-
-                    applyStylesheet(i, o, t, conteudo[i][2]);
-
-                    if (i > 0 && o + 1 == conteudo[i].length) {
-
-                        let btn = document.createElement("button");
-
-                        btn.onmouseover = function () { applyColorOnOver(btn) };
-                        btn.onmouseout = function () { removeColorOnOut(btn) };
-                        btn.onclick = function () { applyColorOnClick(btn) }
-
-                        btn.appendChild(document.createTextNode(conteudo[i][o]));
-
-                        applyStylesheet(i, o, btn, conteudo[i][2]);
-
-                        t.appendChild(btn);
+                    for (var o = 0; o < conteudo[i].length; o++) {
+    
+                        var t = document.createElement(thd(i));
+    
+                        applyStylesheet(i, o, t, conteudo[i][2]);
+    
+                        if (i > 0 && o + 1 == conteudo[i].length) {
+    
+                            let btn = document.createElement("button");
+    
+                            btn.onmouseover = function () { applyColorOnOver(btn) };
+                            btn.onmouseout = function () { removeColorOnOut(btn) };
+                            btn.onclick = function () { applyColorOnClick(btn) }
+    
+                            btn.appendChild(document.createTextNode(conteudo[i][o]));
+    
+                            applyStylesheet(i, o, btn, conteudo[i][2]);
+    
+                            t.appendChild(btn);
+                        }
+                        else {
+                            t.appendChild(document.createTextNode(conteudo[i][o]));
+                        }
+    
+                        tr.appendChild(t);
                     }
-                    else {
-                        t.appendChild(document.createTextNode(conteudo[i][o]));
-                    }
-
-                    tr.appendChild(t);
+    
+                    (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
+    
                 }
-
-                (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
-
+                
             }
 
             table.appendChild(thead);
@@ -105,14 +110,6 @@
         
 
         /*
-        temporary = []
-        let datas = getLocalStorage();
-        temporary[0] = ["Nome", "Telefone", "Experiência Prévia", "ações"]
-
-        for (let i = 1; i < datas.length; i++) {
-            temporary[i] = datas[i]
-        }
-
         
         for (let index = 0; index < temporary.length; index++) {
             console.log(temporary[index])
@@ -135,12 +132,9 @@
             console.log(fake[index])
         }
 
-        genChildsAndDatas([
-                temporary
-            ]
-        )
         */
-       
+
+        /*
         genChildsAndDatas([
             ["Nome", "Telefone", "Experiência Prévia", "ações"],
             ["matheus", "+55 (99) 99999-9999", "sim", "alterar"],
@@ -152,8 +146,15 @@
             ["lidia", "+55 (33) 33333-3333", "não", "alterar"],
             ["priscila", "+55 (22) 22222-2222", "sim", "alterar"],
             ["maria", "+55 (11) 11111-1111", "sim", "alterar"]
-        ])
+        ]) 
+        */
+        var dt = [...getLocalStorage(), "alterar"];
 
+        genChildsAndDatas([
+            ["Nome", "Telefone", "Experiência Prévia", "ações"],
+            dt
+        ]) 
+        
     }
 
 })(window, document, undefined);

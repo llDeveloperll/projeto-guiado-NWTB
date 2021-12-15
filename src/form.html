@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de alunos</title>    
+    <title>Cadastro</title>    
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/form.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.1.0/vanilla-masker.min.js"></script>
@@ -14,7 +14,7 @@
     <header class="header">
         <img src="../assets/images/logo.png" alt="logo newtab">
         <div class="menu">
-            <a href="../index.html">
+            <a id = "home" href="../index.html">
                 Listagem
             </a>
             <a href="./form.html">
@@ -23,7 +23,7 @@
         </div>
     </header>
     <section>
-        <form class="form">
+        <form class="form" onsubmit="registerForm(event)">
             <h3>Cadastre-se, preenchendo <br> as informações abaixo.</h1>
             <div class="form-line">
                 <label class="big-label" for="name">Nome</label>
@@ -38,37 +38,24 @@
             <div class="form-line exp-line" style="display: flex;">
                 <label class="big-label">Experiência Prévia</label>
                 <div class="select-exp">
-                    <input type="radio" name="exp" id="exp-yes" value="sim">
+                    <input type="radio" name="exp" id="exp-yes" value="true">
                     <label for="exp-yes">
                         Sim
                     </label> 
                     <br>
-                    <input type="radio" name="exp" id="exp-no" value="não" checked>
+                    <input type="radio" name="exp" id="exp-no" value="false" checked>
                     <label for="exp-no">
                         Não
                     </label> 
                 </div>
             </div>
         
-            <input class="submit-form" onclick="setLocalStorage()" type="submit" value="Enviar">
+            <input class="submit-form" type="submit" value="Enviar">
         </form>
     </section>
 </body>
 
-    <script>
-        function inputHandler(masks, max, event) {
-            var c = event.target;
-            var v = c.value.replace(/\D/g, '');
-            var m = c.value.length > max ? 1 : 0;
-            VMasker(c).unMask();
-            VMasker(c).maskPattern(masks[m]);
-            c.value = VMasker.toPattern(v, masks[m]);
-        }
-
-        var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
-        var tel = document.getElementById('phone');
-        VMasker(tel).maskPattern(telMask[0]);
-        tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
-    </script>
+    <script src="../assets/js/formatPhoneNumber.js"></script>
+    <script src="../assets/js/form.js"></script>
     
 </html>
