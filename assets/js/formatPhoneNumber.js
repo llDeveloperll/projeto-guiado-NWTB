@@ -9,5 +9,5 @@ function inputHandler(masks, max, event) {
 
 var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
 var tel = document.getElementById('phone');
-VMasker(tel).maskPattern(telMask[0]);
+VMasker(tel).maskPattern(telMask[1]);
 tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
